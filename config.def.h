@@ -5,12 +5,9 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-//static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-//static int borderpx = 2;
-//static char *font = "mono:pixelsize=12:antialias=true:autohint=true";
-static char *font = "xos4 Terminus:pixelsize=13:antialias=true:autohint=true";
-static char *font2[] = { "Symbola:pixelsize=10:antialias=true:autohint=true" };
-static int borderpx = 1;
+static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static int borderpx = 2;
+
 /*
  * What program is execed by st depends of these precedence rules:
  * 1: program passed with -e
@@ -19,7 +16,7 @@ static int borderpx = 1;
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char *shell = "/bin/zsh";
+static char *shell = "/bin/sh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
 char *scroll = NULL;
@@ -68,7 +65,7 @@ static unsigned int blinktimeout = 800;
 /*
  * thickness of underline and bar cursors
  */
-static unsigned int cursorthickness = 3;
+static unsigned int cursorthickness = 2;
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
@@ -97,57 +94,39 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.67;
+float alpha = 0.8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-  "#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
-  "#cc241d",
-  "#98971a",
-  "#d79921",
-  "#458588",
-  "#b16286",
-  "#689d6a",
-  "#a89984",
-  "#928374",
-  "#ff0000",
-  "#b8bb26",
-  "#fabd2f",
-  "#83a598",
-  "#d3869b",
-  "#8ec07c",
-  "#ebdbb2",
-  /* /\* 8 normal colors *\/ */
-  /* 	"black", */
-  /* 	"red3", */
-  /* 	"green3", */
-  /* 	"blue", */
-  /* 	"blue2", */
-  /* 	"magenta3", */
-  /* 	"cyan3", */
-  /* 	"black", */
+	/* 8 normal colors */
+	"black",
+	"red3",
+	"green3",
+	"yellow3",
+	"blue2",
+	"magenta3",
+	"cyan3",
+	"gray90",
 
-  /* 	/\* 8 bright colors *\/ */
-  /* 	"gray50", */
-  /* 	"red", */
-  /* 	"green", */
-  /* 	"yellow", */
-  /* 	"#5c5cff", */
-  /* 	"magenta", */
-  /* 	"cyan", */
-  /* 	"white", */
+	/* 8 bright colors */
+	"gray50",
+	"red",
+	"green",
+	"yellow",
+	"#5c5cff",
+	"magenta",
+	"cyan",
+	"white",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	/* "black", /\* 256 -> cursor *\/ */
-	/* "blue", /\* 257 -> rev cursor*\/ */
-	/* "white", /\* 258 -> bg *\/ */
-	/* "black", /\* 259 -> fg *\/ */
-	"#add8e6", /* 256 -> cursor */
-	"#8ed079", /* 257 -> rev cursor*/
-	"#000000", /* 258 -> bg */
-	"#ebdbb2", /* 259 -> fg */
+	"#cccccc",
+	"#555555",
+
+	"gray90", /* default foreground colour */
+	"black", /* default background colour */
+
 };
 
 
@@ -155,10 +134,11 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 259; 
-unsigned int defaultbg = 258; 
-unsigned int defaultcs = 257; 
-static unsigned int defaultrcs = 256;
+
+unsigned int defaultfg = 258;
+unsigned int defaultbg = 259;
+unsigned int defaultcs = 256;
+static unsigned int defaultrcs = 257;
 
 /*
  * Default shape of cursor
@@ -167,7 +147,7 @@ static unsigned int defaultrcs = 256;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 4;
+static unsigned int cursorshape = 2;
 
 /*
  * Default columns and rows numbers
@@ -180,7 +160,7 @@ static unsigned int rows = 24;
  * Default colour and shape of the mouse cursor
  */
 static unsigned int mouseshape = XC_xterm;
-static unsigned int mousefg = 255; //
+static unsigned int mousefg = 7;
 static unsigned int mousebg = 0;
 
 /*
@@ -204,8 +184,7 @@ static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
 	{ ShiftMask,            Button4, kscrollup,      {.i = 1} },
 	{ ShiftMask,            Button5, kscrolldown,    {.i = 1} },
-
-        { XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
+	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
 	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },

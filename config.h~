@@ -7,10 +7,9 @@
  */
 //static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
 //static int borderpx = 2;
-//static char *font = "mono:pixelsize=12:antialias=true:autohint=true";
-static char *font = "xos4 Terminus:pixelsize=13:antialias=true:autohint=true";
-static char *font2[] = { "Symbola:pixelsize=10:antialias=true:autohint=true" };
-static int borderpx = 1;
+static char *font = "mono:pixelsize=12:antialias=true:autohint=true";
+static char *font2[] = { "JoyPixels:pixelsize=10:antialias=true:autohint=true" };
+static int borderpx = 2;
 /*
  * What program is execed by st depends of these precedence rules:
  * 1: program passed with -e
@@ -19,7 +18,7 @@ static int borderpx = 1;
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char *shell = "/bin/zsh";
+static char *shell = "/bin/sh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
 char *scroll = NULL;
@@ -68,7 +67,7 @@ static unsigned int blinktimeout = 800;
 /*
  * thickness of underline and bar cursors
  */
-static unsigned int cursorthickness = 3;
+static unsigned int cursorthickness = 2;
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
@@ -97,7 +96,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.67;
+float alpha = 0.7;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -110,7 +109,7 @@ static const char *colorname[] = {
   "#689d6a",
   "#a89984",
   "#928374",
-  "#ff0000",
+  "#fb4934",
   "#b8bb26",
   "#fabd2f",
   "#83a598",
@@ -145,8 +144,8 @@ static const char *colorname[] = {
 	/* "white", /\* 258 -> bg *\/ */
 	/* "black", /\* 259 -> fg *\/ */
 	"#add8e6", /* 256 -> cursor */
-	"#8ed079", /* 257 -> rev cursor*/
-	"#000000", /* 258 -> bg */
+	"#555555", /* 257 -> rev cursor*/
+	"#282828", /* 258 -> bg */
 	"#ebdbb2", /* 259 -> fg */
 };
 
@@ -157,7 +156,7 @@ static const char *colorname[] = {
  */
 unsigned int defaultfg = 259; 
 unsigned int defaultbg = 258; 
-unsigned int defaultcs = 257; 
+static unsigned int defaultcs = 257; 
 static unsigned int defaultrcs = 256;
 
 /*
@@ -167,7 +166,7 @@ static unsigned int defaultrcs = 256;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 4;
+static unsigned int cursorshape = 2;
 
 /*
  * Default columns and rows numbers
