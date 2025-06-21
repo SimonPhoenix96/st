@@ -8,7 +8,11 @@
 //static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
 //static int borderpx = 2;
 //static char *font = "mono:pixelsize=12:antialias=true:autohint=true";
-static char *font = "xos4 Terminus:pixelsize=13:antialias=true:autohint=true";
+static char *font = "xos4 Terminus:pixelsize=14:antialias=true:autohint=true";
+/* Alternative larger sizes:
+static char *font = "xos4 Terminus:pixelsize=18:antialias=true:autohint=true";
+static char *font = "xos4 Terminus:pixelsize=20:antialias=true:autohint=true";
+*/
 static char *font2[] = { "Symbola:pixelsize=10:antialias=true:autohint=true" };
 static int borderpx = 1;
 /*
@@ -99,7 +103,14 @@ unsigned int tabspaces = 8;
 /* bg opacity */
 float alpha = 0.67;
 
+/* Alternative opacity levels - uncomment to try:
+float alpha = 0.8;   // Less transparent
+float alpha = 0.5;   // More transparent  
+float alpha = 0.9;   // Barely transparent
+*/
+
 /* Terminal colors (16 first used in escape sequence) */
+/* Current: Gruvbox Dark */
 static const char *colorname[] = {
   "#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
   "#cc241d",
